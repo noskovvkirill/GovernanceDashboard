@@ -19,6 +19,7 @@ type Icon = {
 const StyledProtocolContainer = styled('div', {
     display: 'flex',
     flexDirection: 'column',
+    boxSizing:'border-box',
     gap: '$1',
     lineHeight:'100%',
     padding: '$1',
@@ -71,12 +72,13 @@ const ProtocolTile = ({name, totalProposals, icons, totalVotes, uniqueVoters}:Pr
     return(
         <StyledProtocolContainer
             css={{
+                width: `${clamp(totalProposals * 2, 128, 768)}px`,
+                height: `${clamp(totalProposals * 2, 128, 768)}px`,
                 backgroundColor:`hsl(${charToColor(name)}, 67%, 96%)`,
                 color: `hsl(${charToColor(name)}, 75%, 57%)`,
                 border: `1px solid hsl(${charToColor(name)}, 75%, 93%)`,
                 fontSize:`clamp(1rem, ${totalProposals/100}vw, 4rem)`,
-                width: `${clamp(totalProposals*2, 128, 768)}px`,
-                height: `${clamp(totalProposals*2, 128, 768)}px`,
+              
             }}>
             <Box layout='flexBoxRow' css={{alignItems:'center'}}>
                 { icons 

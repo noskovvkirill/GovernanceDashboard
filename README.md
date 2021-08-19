@@ -14,3 +14,12 @@ Hackathon url: https://gitcoin.co/hackathon/dgov
 ✺ Decentralized projects often rely on UI/UX patterns developed for web-2. We have to explore the patterns for a new web where wallets & governance mechanisms are part of every website. 
 
 ✺ The project is not trying to be a safe solution and to-go place for everyone but tries to find new methods to analyze the protocols.
+
+### Roadmap
+✺ Add SWR Infinite to progressively load content
+✺ Working Filters (by votes, proposals, participants), layout adjustments: masonry/normal 
+✺ Fix layout (Add right Sidebar, design Header/Footer)
+✺ Working Search
+✺ Individudal Page for each DAO
+✺ iOS like transitions on open
+✺ ... more to come

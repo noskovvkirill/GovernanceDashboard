@@ -7,7 +7,7 @@ export const { styled, css, global, getCssString, keyframes } = createCss({
             ...sand,
             white: 'rgba(255,255,255,1)',
             black: 'rgba(0,0,0,1)',
-            background: sand.sand12,
+            background: sand.sand2,
             foreground: sand.sand11,
             text: sand.sand2,
             pink: '#FF97CA',

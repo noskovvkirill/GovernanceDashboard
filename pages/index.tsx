@@ -8,7 +8,7 @@ import Masonry from 'react-masonry-component';
 const fetcher = (url:string) => fetch(url).then(res => res.json())
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const initialData = await fetcher('https://api.boardroom.info/v1/protocols?limit=10')
+  const initialData = await fetcher('https://api.boardroom.info/v1/protocols?limit=20')
   return { props: { initialData } }
 };
 

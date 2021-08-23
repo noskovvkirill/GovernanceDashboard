@@ -32,7 +32,7 @@ const StyledButton = styled("button", {
                 },
             },
             outlined: {
-               
+                border:'1px solid lightgray',
                 "&:hover": {
                   
                 },

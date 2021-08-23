@@ -1,9 +1,11 @@
 import {styled} from 'stitches.config'
 import Box from '@/design-system/primitives/Box'
+import Button from '@/design-system/primitives/Button'
 import Head from 'next/head'
 import { ReactNode} from 'react'
-import Input from '@/design-system/primitives/Input'
+import Search from '@/design-system/Search'
 import Profile from '@/design-system/Profile'
+import {useRouter} from 'next/router'
 
 const StyledMain = styled('main', {
     backgroundColor: '$background',
@@ -12,12 +14,10 @@ const StyledMain = styled('main', {
     overflowY: 'scroll',
     minHeight: '88vh',
     overflowX: 'hidden',
-    padding: '$2 $4',
-    paddingTop: '$5',
+    padding: '$0 $4',
     display: 'flex',
     flex: '1',
     flexDirection: 'row',
-    gap: '$5'
 })
 
 const StyledFooter = styled('footer', {
@@ -44,9 +44,11 @@ const StyledHeader = styled('header', {
 
 type Props = {
     children?: ReactNode;
+    isSelected:boolean;
 }
 
-const Layout = ({children}:Props) =>{
+const Layout = ({children, isSelected}:Props) =>{
+    const router = useRouter()
     return(
             <Box>
                 <Head>
@@ -55,12 +57,20 @@ const Layout = ({children}:Props) =>{
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
                 <StyledHeader>
-                    <Box layout='flexBoxRow' css={{gap:'$0', alignItems:'center'}}>
+                    <Box layout='flexBoxRow' css={{gap:'$2', alignItems:'center'}}>
+                        {isSelected && (
+                            <Button 
+                            onClick={()=>router.push('/')}
+                            css={{padding:'$1'}}
+                            look={"outlined"}>
+                                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.85355 3.14645C7.04882 3.34171 7.04882 3.65829 6.85355 3.85355L3.70711 7H12.5C12.7761 7 13 7.22386 13 7.5C13 7.77614 12.7761 8 12.5 8H3.70711L6.85355 11.1464C7.04882 11.3417 7.04882 11.6583 6.85355 11.8536C6.65829 12.0488 6.34171 12.0488 6.14645 11.8536L2.14645 7.85355C1.95118 7.65829 1.95118 7.34171 2.14645 7.14645L6.14645 3.14645C6.34171 2.95118 6.65829 2.95118 6.85355 3.14645Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd"></path></svg>
+                            </Button>
+                        )}
                         <Profile/>
                         <p>Boardroom Governance</p>
                     </Box>
                     <Box>
-                        <Input css={{ minWidth:'256px' }} type='search' placeholder="search" />
+                        <Search/>
                     </Box>
                 </StyledHeader>
                 <StyledMain>

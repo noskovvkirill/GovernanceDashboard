@@ -3,6 +3,7 @@ import type { AppProps /* , AppContext */ } from "next/app";
 import { IdProvider } from "@radix-ui/react-id";
 import { globalStyles } from "../stitches.config";
 import {RecoilRoot} from 'recoil'
+import { AnimateSharedLayout} from 'framer-motion'
 
 function MyApp({ Component, pageProps }: AppProps) {
 
@@ -10,9 +11,13 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <RecoilRoot>
-      <IdProvider>
-        <Component {...pageProps} />
-      </IdProvider>
+      <AnimateSharedLayout
+      type="switch"
+      >
+        <IdProvider>
+          <Component {...pageProps} />
+        </IdProvider>
+      </AnimateSharedLayout>
     </RecoilRoot>
   );
 }

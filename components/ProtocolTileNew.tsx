@@ -8,6 +8,7 @@ import {  motion } from 'framer-motion'
 
 export type Protocol = {
     name: string,
+    cname?: string,
     totalProposals: number;
     totalVotes: number;
     uniqueVoters: number;
@@ -51,7 +52,6 @@ const StyledProtocolContainer = styled('div', {
                     animation: `${fontWeightAnimation} 2s`,
                     animationFillMode: 'forwards',
                     color: 'green',
-                    backgroundColor: 'lightgreen',
                     border: '1px solid green'
                 },
             },
@@ -62,6 +62,34 @@ const StyledProtocolContainer = styled('div', {
     }
 })
 
+
+const StyledProtocolBg = styled('div', {
+    display: 'flex',
+    flexDirection: 'column',
+    boxSizing: 'border-box',
+    borderRadius: '$1',
+    overflow: 'hidden',
+    transition: '$all',
+    variants: {
+        selected: {
+            true: {
+                transition: "all 0.8s ease-in-out",
+            },
+            false: {
+                justifyContent: 'space-between',
+                transition: 'none',
+                '&:hover': {
+                    transform: 'scale(1.005)',
+                    animationFillMode: 'forwards',
+                    backgroundColor: 'lightgreen',
+                },
+            },
+        },
+    },
+    defaultVariants: {
+        selected: false
+    }
+})
  
 
 
@@ -76,6 +104,7 @@ const StyledProtocolInfo = styled('ul',{
 })
 
 const StyledProtocolInfoItem = styled('li',{
+    pointerEvents:'none',
     padding:'$0',
     display:'flex',
     alignItems:'center',
@@ -119,30 +148,26 @@ const charToColor = (text:string) => {
 const ProtocolTile = ({ name, onClick, totalProposals, icons, totalVotes, uniqueVoters, selected}:Protocol) =>{
     return(
         <motion.div
-            onClick={onClick}
-            style={{ willChange:'contents', 
-                     padding:!selected ? '8px' : '0',
-                     width: !selected ? 'fit-content' : '100%',
-                     height: 'fit-content',
-                     overflow:'hidden',
-                     originX:0.5,
-                     originY:0.5,
-            }}
-            initial={{opacity:0}}
-            animate={{opacity:1}}
-            exit={{opacity:0}}
-            layoutId={String(name+'container')}
-            transition={{ duration: 0.5, delay: 0.01 }}
+            initial={false}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{
+                    padding:'8px',
+                    position: 'relative',
+                    width: !selected ? `${clamp(totalProposals * 2, 144, 768)}px` : '100%',
+                    height: !selected ? `${clamp(totalProposals * 2, 144, 768)}px` : 'fit-content',
+        }}
         >
             <StyledProtocolContainer
+                onClick={onClick}
                 selected={selected}
                 css={{
+                    position:'relative',
                     overflow:'hidden',
+                    width:'100%',
+                    height:'100%',
                     transition:'none',
                     boxSizing:'border-box',
-                    width: !selected ? `${clamp(totalProposals * 2, 144, 768)}px` : '100%',
-                    height: !selected ?  `${clamp(totalProposals * 2, 144, 768)}px` : '320px',
-                    backgroundColor:`hsl(${charToColor(name)}, 67%, 96%)`,
                     color: `hsl(${charToColor(name)}, 75%, 47%)`,
                     border: !selected ? `1px solid hsl(${charToColor(name)}, 75%, 63%)` : '0px',
                     fontSize:`clamp(1rem, ${totalProposals/100}vw, 4rem)`,
@@ -150,41 +175,59 @@ const ProtocolTile = ({ name, onClick, totalProposals, icons, totalVotes, unique
                         boxShadow: !selected ? `0 3px 10px 0.09em hsla(${charToColor(name)}, 75%, 47%, 20%)` : ``
                     }
                 }}>
-                <Box layout='flexBoxRow' css={{alignItems:'center'}}>
-                    { icons 
-                    && (<motion.img
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        layoutId={String(name + 'icon')}
-                        style={{
+                
+                <motion.div
+                    initial={false}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    layoutId={String(name + 'bg')}
+                    style={{
                             originX: 0.5,
                             originY: 0.5,
+                            pointerEvents: 'all',
+                            width: '100%',
+                            height: '100%',
+                            position: 'absolute',
+                            left: 0,
+                            top: 0,
+                            zIndex: 0,
+                    }}
+                >
+                    <StyledProtocolBg
+                    selected={selected}
+                    css={{
+                        backgroundColor: `hsl(${charToColor(name)}, 67%, 96%)`,
+                        width: '100%',
+                        height: '100%',
+                        }}></StyledProtocolBg>
+                </motion.div>
+
+
+                
+
+                <Box layout='flexBoxRow' css={{alignItems:'center',pointerEvents:'none', zIndex:1}}>
+                    { icons 
+                    && (<motion.img
+                        initial={false}
+                        animate={{ opacity: 1 }}
+                        exit={{opacity:0}}
+                        style={{
                             width: !selected ?  '24px' : '48px',
                             height: !selected ? '24px' : '48px',
                             borderRadius: '30px', boxShadow: `0 0 0 0.07em #000000, 0 0 0 0.13em #FFFFFF, 0 1px 5px 0.07em hsl(${charToColor(name)}, 75%, 47%) `}}
                         alt={name+'icon'}
                         src={icons[0].url} />)}
         
-                    <motion.div
-                        style={{
-                            originX: 0.5,
-                            originY: 0.5
-                        }}
-                        layoutId={String(name+'title')}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                    >
+                
                         <StyledTitle
                         selected={selected}
                         >{name}
                         </StyledTitle>
-                    </motion.div>
+
                 </Box>
                 
               
-                    <StyledProtocolInfo as="ul">
+                    <StyledProtocolInfo as="ul" css={{pointerEvents:'none', zIndex:1}}>
                         <StyledProtocolInfoItem as="li">
                             <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.8536 1.14645C11.6583 0.951184 11.3417 0.951184 11.1465 1.14645L3.71455 8.57836C3.62459 8.66832 3.55263 8.77461 3.50251 8.89155L2.04044 12.303C1.9599 12.491 2.00189 12.709 2.14646 12.8536C2.29103 12.9981 2.50905 13.0401 2.69697 12.9596L6.10847 11.4975C6.2254 11.4474 6.3317 11.3754 6.42166 11.2855L13.8536 3.85355C14.0488 3.65829 14.0488 3.34171 13.8536 3.14645L11.8536 1.14645ZM4.42166 9.28547L11.5 2.20711L12.7929 3.5L5.71455 10.5784L4.21924 11.2192L3.78081 10.7808L4.42166 9.28547Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd"></path></svg>
                             {totalProposals}
@@ -203,12 +246,13 @@ const ProtocolTile = ({ name, onClick, totalProposals, icons, totalVotes, unique
                     {selected && (
                         <motion.p
                         style={{
+                            zIndex:1,
                             originX: 0.5,
-                            originY: 0.5
+                            originY: 0.5,
                         }}
                         initial={{opacity:'0'}}
                         animate={{opacity:'1'}}
-                        transition={{delay:0.5, duration:0.2}}
+                        transition={{delay:0.2, duration:0.5}}
                         >
                             Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.
 
@@ -224,8 +268,10 @@ const ProtocolTile = ({ name, onClick, totalProposals, icons, totalVotes, unique
                         </motion.p>
 
                     )}
-            </StyledProtocolContainer> 
-         </motion.div>
+            </StyledProtocolContainer>
+            </motion.div>
+
+        //  </motion.div>
     )
 }
 

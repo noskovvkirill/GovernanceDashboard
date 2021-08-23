@@ -1,10 +1,14 @@
 ## Sumbission | Boardroom Hackathon 
 Hackathon url: https://gitcoin.co/hackathon/dgov
 
+<img width="1677" alt="wip" src="https://user-images.githubusercontent.com/50060130/130155974-af782109-1978-4851-a126-567325f4aba4.png">
+
 ✷ Submission for the Bounty ☞ https://gitcoin.co/issue/boardroom-inc/dgov-hackathon/2/100026328
+
 
 ### Figma brainstorm file
 ✷ https://www.figma.com/file/C4JN0sVBAwihQSK705n4MI/Untitled?node-id=0%3A1
+
 
 ### Proposal
 ✺ The idea is to create a semi-spatial interface for the protocol proposals to reduce a cognitive load from homogeneous text, identical pages, and proposals. Each protocol has to have a unique and identifiable page, color palette, etc while preserving project integrity. 
@@ -17,9 +21,15 @@ Hackathon url: https://gitcoin.co/hackathon/dgov
 
 ### Roadmap
 ✺ Add SWR Infinite to progressively load content
+
 ✺ Working Filters (by votes, proposals, participants), layout adjustments: masonry/normal 
+
 ✺ Fix layout (Add right Sidebar, design Header/Footer)
+
 ✺ Working Search
+
 ✺ Individudal Page for each DAO
+
 ✺ iOS like transitions on open
+
 ✺ ... more to come

@@ -20,16 +20,22 @@ Hackathon url: https://gitcoin.co/hackathon/dgov
 ✺ The project is not trying to be a safe solution and to-go place for everyone but tries to find new methods to analyze the protocols.
 
 ### Roadmap
-✺ Add SWR Infinite to progressively load content
+✺ [DONE] Add SWR Infinite to progressively load content
 
-✺ Working Filters (by votes, proposals, participants), layout adjustments: masonry/normal 
+✺ [DONE] iOS like transitions on open
 
-✺ Fix layout (Add right Sidebar, design Header/Footer)
+✺ [IN PROGRESS] Working Filters (by votes, proposals, participants), layout adjustments: masonry/normal 
+
+✺ [IN PROGRESS] Fix layout (Add right Sidebar, design Header/Footer)
+
+✺ [IN PROGRESS] Individual Page for each DAO
+
+✺ [IN PROGRESS] DAO Page Cards transitions
+
+✺ DAO Page View Preferences (List/Cards)
+
+✺ DAO Page Design
 
 ✺ Working Search
 
-✺ Individudal Page for each DAO
-
-✺ iOS like transitions on open
-
-✺ ... more to come
+✺ ...more to come

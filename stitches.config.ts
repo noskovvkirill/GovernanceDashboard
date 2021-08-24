@@ -100,7 +100,9 @@ export const globalStyles = global({
         fontWeight:'300',
         fontFamily: "Satoshi-Variable",
     },
-    "body, html, #__next": { minHeight: "100%", height: "100%" },
+    "body, html, #__next": {
+        background: '$background',
+        minHeight: "100%", height: "100%" },
     h1: { fontSize: "$1", lineHeight: "$6", fontWeight: "300" },
     h2: { fontSize: "$2", lineHeight: "$5" },
     h3: { fontSize: "$3", lineHeight: "$4", fontWeight: "300" },

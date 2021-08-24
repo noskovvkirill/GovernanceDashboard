@@ -2,6 +2,7 @@ import { styled } from "stitches.config";
 
 const Box = styled("div", {
     padding: 0,
+    textTransform:'unset',
     variants: {
         look: {
             default: {

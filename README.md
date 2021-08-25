@@ -23,7 +23,7 @@ Hackathon url: https://gitcoin.co/hackathon/dgov
 ✺ [DONE] Add SWR Infinite to progressively load content
 
 ✺ [DONE] iOS like transitions on open
-
+ 
 ✺ [IN PROGRESS] Working Filters (by votes, proposals, participants), layout adjustments: masonry/normal 
 
 ✺ [IN PROGRESS] Fix layout (Add right Sidebar, design Header/Footer)
@@ -32,9 +32,15 @@ Hackathon url: https://gitcoin.co/hackathon/dgov
 
 ✺ [IN PROGRESS] DAO Page Cards transitions
 
+✺ [DONE] Add Framer Motion + Stitches primitive Box component
+
+✺ Protocol details on Tile Hover
+
+✺ [?] Right click on protocol to add to the Featured List
+
 ✺ DAO Page View Preferences (List/Cards)
 
-✺ DAO Page Design
+✺ [IN PROGRESS] DAO Page Design
 
 ✺ Working Search
 

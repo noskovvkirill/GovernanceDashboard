@@ -111,7 +111,7 @@ export const globalStyles = global({
     p: { fontSize: "$p", lineHeight: "$p", fontWeight: "300" },
     span: { fontSize: "$p", lineHeight: "$p", fontWeight: "300" },
     b: {
-        fontWeight: "300",
+        fontWeight: "500",
     },
     hr: {
         border: 0,

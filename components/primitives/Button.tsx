@@ -4,7 +4,6 @@ const StyledButton = styled("button", {
     transition: "$background",
     userSelect: "none",
     fontSize: "$p",
-    padding: "$1 $3",
     width: "fit-content",
     borderRadius: "$1",
     display: "flex",
@@ -13,8 +12,27 @@ const StyledButton = styled("button", {
     height: "fit-content",
     whiteSpace: "nowrap",
     backgroundColor: "transparent",
+    alignItems:'center',
+    gap:"$0",
+    padding:'$1',
     border: "0",
     variants: {
+        selected:{
+            true:{
+
+            },
+            false:{
+
+            },
+        },
+        color:{
+            gray:{
+                color:'gray'
+            },
+            black:{
+                color:'black'
+            },
+        },
         look: {
             default: {
         
@@ -32,9 +50,10 @@ const StyledButton = styled("button", {
                 },
             },
             outlined: {
-                border:'1px solid lightgray',
+                border:'1px solid',
+                borderColor:'lightgray',
                 "&:hover": {
-                  
+                  color:'black',
                 },
                 "&:focus": {
                
@@ -46,10 +65,51 @@ const StyledButton = styled("button", {
                   
                 },
             },
+            color:{
+
+            }
         },
     },
+    compoundVariants: [
+        {
+            color: 'black',
+            look: 'outlined',
+            css: {
+                color: 'black',
+                borderColor: 'black',
+                '&:hover': {
+                    color: 'white',
+                    backgroundColor:'$black'
+                },
+                '&:active':{
+                    color: 'white',
+                    backgroundColor: '$black'
+                }
+            },
+        },
+        {
+            color: 'black',
+            look: 'outlined',
+            selected:'true',
+            css: {
+                borderColor: 'black',
+                color: 'white',
+                backgroundColor: '$black',
+                '&:hover': {
+                    color: 'white',
+                    backgroundColor: '$black'
+                },
+                '&:active': {
+                    color: 'white',
+                    backgroundColor: '$black'
+                }
+            },
+        }
+    ],
     defaultVariants: {
         look: "default",
+        color:'gray',
+        selected:'false'
     },
 });
 

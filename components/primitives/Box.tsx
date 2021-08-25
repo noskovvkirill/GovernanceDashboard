@@ -1,4 +1,8 @@
+/* eslint-disable react/display-name */
 import { styled } from "stitches.config";
+import {motion} from  'framer-motion'
+import React from 'react'
+
 
 const Box = styled("div", {
     padding: 0,
@@ -30,3 +34,11 @@ const Box = styled("div", {
     },
 });
 export default Box;
+
+
+const Component = React.forwardRef((props:any, ref:any) => (
+    <Box {...props} ref={ref} />
+))
+
+export const BoxMotion = motion(Component)
+

@@ -1,6 +1,5 @@
   import Box from  '@/design-system/primitives/Box'
   import Button from  '@/design-system/primitives/Button'
-  import { fontWeightAnimation } from 'stitches.config'
 
   const Introduction = () =>{
     return(

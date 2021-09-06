@@ -6,7 +6,7 @@ import { ReactNode} from 'react'
 import Search from '@/design-system/Search'
 import Settings from '@/design-system/Settings'
 import {useRouter} from 'next/router'
-import {useRecoilState} from 'recoil'
+import {useSetRecoilState, useRecoilState} from 'recoil'
 import { minWidthTile, maxWidthTile, SortMethod} from 'contexts/cardSettings'
 import Auth from '@/design-system/Auth'
 import Sidebar from  '@/design-system/Sidebar'
@@ -139,7 +139,7 @@ const Header = ({scrollY, children, scrollTransitionValue,scrollDirection, isSel
 const Layout = ({children, isSelected}:PropsLayout) =>{
     const [maxWidth, setMaxWidth] = useRecoilState(maxWidthTile)
     const [minWidth, setMinWidth] = useRecoilState(minWidthTile)
-    const [sortM, setSort] = useRecoilState(SortMethod)
+    const setSort = useSetRecoilState(SortMethod)
 
     const container = useRef(null)
     const [scrollY, setScrollY] = useThrottle(0)

@@ -4,6 +4,7 @@ import { styled } from 'stitches.config'
 
 const StyledSearch  = styled(Input, {
     transition:'$all',
+    height:'fit-content',
     variants:{
         open:{
             true:{

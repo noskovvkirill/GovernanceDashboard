@@ -1,7 +1,8 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { styled } from 'stitches.config';
 import ArrayEmoji from '@/design-system/primitives/ArrayEmoji' //lazy load it later
-import {atom, useRecoilState} from 'recoil'
+import { useRecoilState} from 'recoil'
+import {user} from 'contexts/user'
 import  {useEffect} from 'react'
 // import { ethers } from "ethers";
 
@@ -33,31 +34,16 @@ declare global {
     }
 }
 
-interface User {
-    isSigned:boolean;
-    address:string | null;
-    username:string | null;
-    emoji:string | null
-}
-const user = atom({
-    key:'user',
-    default:{
-        isSigned:false,
-        address:null,
-        username:null,
-        emoji:null
-    } as User
-})
-
 
 const StyledTrigger = styled(DropdownMenu.Trigger,{
     background:'transparent',
     borderRadius:'$2',
     display:'flex',
+    gap:'$0',
     alignItems:'center',
     justifyContent:'center',
     border:'1px solid lightgray',
-    padding:'$0 $1',
+    padding:'0 $1',
     color:'gray',
     userSelect:'none'
 })
@@ -178,7 +164,7 @@ const Auth = () => {
     return(
         <DropdownMenu.Root>
             <StyledTrigger>
-                {currentUser.emoji}
+                <span>{currentUser.emoji}</span>
                 {currentUser.username || currentUser.address || 'Not Authorized'}</StyledTrigger>
             <StyledContent>
                 <StyledGroup>
@@ -201,7 +187,7 @@ const Auth = () => {
                             console.log(e)
                         }
                     }}>
-                    {currentUser.emoji ||  "Set 😃"}
+                    <span>{currentUser.emoji ||  "Set 😃"}</span>
                     </StyledItemEmoji>)}
 
                     <StyledGroupButtons>

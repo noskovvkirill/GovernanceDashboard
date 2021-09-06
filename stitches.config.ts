@@ -34,7 +34,8 @@ export const { styled, css, global, getCssString, keyframes } = createCss({
             p: "1rem",
         },
         fonts: {
-            default: "Satoshi-Variable",
+            default: "Satoshi-Variable, Helvetica, Arial, sans-serif",
+            data:"SourceCodeVariable-Roman"
         },
         fontWeights: {
             min:300,
@@ -87,7 +88,9 @@ export const { styled, css, global, getCssString, keyframes } = createCss({
 
 export const fontWeightAnimation = keyframes({
     '0%': { fontWeight: '$min' },
+    '20%': { fontWeight: '$max' },
     '100%': { fontWeight: '$max' },
+
 });
 
 
@@ -98,7 +101,7 @@ export const globalStyles = global({
         padding: 0,
         fontSize: "16px",
         fontWeight:'300',
-        fontFamily: "Satoshi-Variable",
+        fontFamily: "Satoshi-Variable, San Francisco, Helvetica, Arial, sans-serif",
     },
     "body, html, #__next": {
         background: '$background',
@@ -128,7 +131,19 @@ export const globalStyles = global({
     fontWeight: '300 900',
     fontDisplay: 'swap',
     fontStyle: 'normal'
-    }],
+    },
+    {
+    fontFamily: 'SourceCodeVariable-Roman',
+    src: 
+    "url('/fonts/fonts/SourceCodeVariable-Roman.otf.woff2') format('woff2'),"+
+    "url('/fonts/fonts/SourceCodeVariable-Roman.ttf') format('truetype')",
+    fontWeight: '300 900',
+    fontDisplay: 'swap',
+    fontStyle: 'normal'
+    },
+
+    ],
+    // SourceCodeVariable-Roman
     // "@font-face": [
     //     {
     //         fontFamily: "Graphik",

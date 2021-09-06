@@ -104,6 +104,19 @@ const StyledButton = styled("button", {
                     backgroundColor: '$black'
                 }
             },
+        },
+        {
+            color:'gray',
+            look:'outlined',
+            selected:'false',
+            css:{
+                borderColor:'lightgray',
+                color:'gray',
+                '&:hover':{
+                    borderColor:'black',
+                    color:'black'
+                }
+            }
         }
     ],
     defaultVariants: {

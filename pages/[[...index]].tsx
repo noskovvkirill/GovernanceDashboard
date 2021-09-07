@@ -87,9 +87,9 @@ const Home = ({ selected}:Props) => {
           <Masonry
           //  updateOnEachImageLoad={true} 
                 ref={container}
-                onLayoutComplete={(e)=>{
-                  console.log('masonry event complete', e)
-                }}
+                // onLayoutComplete={(e)=>{
+                //   console.log('masonry event complete', e)
+                // }}
                 options={{
                   transitionDuration:0
                 }}

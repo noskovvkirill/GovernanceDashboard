@@ -229,28 +229,41 @@ const ProtocolCard = ({shadow, container, background, border, item, i}:Card) =>{
                     alignItems:'center',
                 }}>
                     <Box layout='flexBoxRow' css={{alignItems:'center', gap:'$2', flexWrap:'wrap'}}>
-                    <b>Stats:</b>
-                    {item.results.map((option: any) => {
+                    <b>Boardroom votes</b>
+                    {item.results.map((option: any, i:number) => {
                         return(<Box 
                                 layout='flexBoxRow'
+                                css={{alignItems:'center'}}
                                 key={option.choice+'total'}>
-                                <span>{item.choices[option.choice]}</span>
+                                <Box 
+                                css={{
+                                    cursor:'pointer',
+                                    padding:'$1',
+                                    borderRadius:'$1',
+                                    background:background,
+                                    mixBlendMode:'multiply',
+                                    filter:`hue-rotate(${i*45}deg)`,
+                                    '&:hover':{
+                                         filter:`hue-rotate(${i*45}deg) brightness(0.95)`,
+                                    }
+                                }}
+                                >{item.choices[option.choice]}</Box>
                                 <span>{option.total}</span>
                                 </Box>)
                     })}
                     </Box>
-                    <Box layout='flexBoxRow' css={{alignItems:'center'}}>
-                        Sort by
-                        <Button look='outlined'>
+                    {/* <Box layout='flexBoxRow' css={{alignItems:'center'}}>
+                        <Button css={{borderColor:border, color:border}} look='outlined'>
                             Sort by
                         </Button>
-                    </Box>
+                    </Box> */}
                 </Box>
                
             </Box>
 
             <ProtocolVoters background={background}
             container={container}
+            title={item.title}
             choices={item.choices}
             refId={item.refId}></ProtocolVoters>
 

@@ -124,7 +124,35 @@ const Sidebar = () =>{
                         </Box>   
                 </Box>
 
-                <Box css={{border:'1px solid lightgray', borderRadius:'$2', padding:'$1', boxSizing:'border-box', marginTop:'$2'}}>
+                <Box css={{padding:'$2 0', width:'100%'}}>
+                    <h5>Top Voters:</h5> 
+                    {votes?.topVoters?.map((voter:any)=>{
+                        return <Box layout='flexBoxRow' css={{width:'100%', justifyContent:'space-between'}} key={'voter'+voter.address}>
+                            <p>{voter.address.slice(0,5)+"..."+voter.address.slice(-10, -1)}</p>
+                            <p>{voter.power}</p>
+                        </Box>
+                    })}
+                </Box>
+
+                <h5>Proposal voting:</h5>  
+                <Box css={{border:'1px solid lightgray', transform:'scale(1.02)', borderRadius:'$2', padding:'$1', boxSizing:'border-box', marginTop:'$2'}}>
+                   <Box as='p' css={{padding:'$1 0'}}>{votes?.title}</Box>
+                   <Box layout='flexBoxRow' css={{flexWrap:'wrap'}}>
+                    
+                   {votes?.choices?.map((item:string, index:number)=>{
+                       return(
+                       <Box key={'choice'+index} css={{
+                           background:votes.color,
+                            mixBlendMode:'multiply',
+                            filter:`hue-rotate(${index*45}deg)`,
+                           borderRadius:'$1',
+                           padding:'0 $1'
+                       }}>
+                           {item}
+                        </Box>)
+                   })}
+                   </Box>
+
                    {votes?.votes?.length>0 && (
                         <Line
                             data={votes.votes}
@@ -147,8 +175,8 @@ const Sidebar = () =>{
                             legendOffset: 6,
                         }}
                          colors={(options)=>{
-                            //  console.log(options.color)
-                             return options.color
+                             console.log('color color', options.color)
+                             return '#000000'
                          }}
                         yFormat=" >-.0f"
                         theme={{textColor:'#000000'}}

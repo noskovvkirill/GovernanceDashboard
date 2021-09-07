@@ -22,7 +22,12 @@ const fetcher = (url:string) => axios.get(url).then(res => res.data)
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const {index} = ctx.query
-    return { props: { selected: index ? index.toString() : null } }
+
+  if(index === 'index'){
+     return { props: { selected: null } }
+  } //there is a weird quirk in production 
+
+   return { props: { selected: index ? index.toString() : null } }
 };
 
 interface Props {
